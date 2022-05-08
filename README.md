@@ -2,6 +2,31 @@
 
 This app is a tool for teachers and administrators in schools. A user will input student names and behavioral data for those students. The app will then sort students into classes, spreading behavioral attributes evenly between the classes. 
 
+
+## Architecture
+
+## Front-End
+
+### User Flow Diagram
+![User Flow Diagram](readme-assets/user-flow-diagram-classroom-sorter.png)
+
+
+
+## Back-End
+
+### Database Schema
+![Database Schema](readme-assets/database-schema-classroom-sorter.png)
+
+### API Routes
+![API Routes 1](readme-assets/api-routes-1.png)
+![API Routes 2](readme-assets/api-routes-2.png)
+![API Routes 3](readme-assets/api-routes-3.png)
+
+
+
+
+
+
 ## Setup
 
 ### Dependencies
