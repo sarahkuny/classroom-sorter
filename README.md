@@ -39,7 +39,7 @@ This app is a tool for teachers and administrators in schools. A user will input
 - Add a '.env' file to the project directory containing MySQL authentication, for example:
 
 ```bash
-  DB_HOST=localhost
+  DB_HOST=127.0.0.1
   DB_USER=root
   DB_NAME=facebook
   DB_PASS=YOURPASSWORD
