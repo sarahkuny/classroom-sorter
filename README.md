@@ -35,7 +35,7 @@ This app is a tool for teachers and administrators in schools. A user will input
 
 ### Database Prep
 - Access the MySQL interface in your terminal by running 'mysql -u root -p'
-- Create a new database called students: 'create database students;'
+- Create a new database called students: 'create database sorter;'
 - Add a '.env' file to the project directory containing MySQL authentication, for example:
 
 ```bash
@@ -45,10 +45,10 @@ This app is a tool for teachers and administrators in schools. A user will input
   DB_PASS=YOURPASSWORD
 ```
 
-- In a new terminal: in the project directory run 'npm run migrate' to create tables within the students database
+- In a new terminal: in the project directory run 'npm run migrate' to create tables within the sorter database
 - To view structure of tables, in MySQL console:
-    - 'use students;'
-    - 'describe TABLE_NAME'
+    - 'use sorter;'
+    - 'describe students'
 
 ### Development
 - BACKEND TERMINAL: in project directory run 'npm start' (runs on port 5000)
