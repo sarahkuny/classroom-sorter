@@ -10,6 +10,14 @@ const sendAllStudents = (req, res) => {
       .catch(err => res.status(500).send(err));
   };
 
+const sendAllStudentsJoined = (req, res) => {
+    db("SELECT students.id, students.first_name, students.last_name, students.group_id, behaviors.id, behaviors.has_goal_one, behaviors.has_goal_two, behaviors.has_goal_three FROM students, behaviors WHERE students.id=behaviors.student_id;")
+        .then(results => {
+            res.send(results.data);
+        })
+        .catch(err => res.status(500).send(err))
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.send("Welcome to the API");
