@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import {Button, Form, FormControl, FormGroup, ToggleButton} from 'react-bootstrap'
 
 export default function RosterView() {
   const [firstName, setFirstName] = useState("");
@@ -6,6 +7,7 @@ export default function RosterView() {
   const [hasGoalOne, setHasGoalOne] = useState(false);
   const [hasGoalTwo, setHasGoalTwo] = useState(false);
   const [hasGoalThree, setHasGoalThree] = useState(false);
+  const [student, setStudent] = useState();
   
   const handleFirstNameChange = (event) => {
     let input = event.target.value;
@@ -25,12 +27,20 @@ export default function RosterView() {
       setHasGoalTwo(event.target.checked)
   }
 
-  const handleCheckThree = (event) => {
-      setHasGoalThree(event.target.checked)
+  const handleCheckThree = (e) => {
+      setHasGoalThree(e.target.checked)
+      console.log(hasGoalThree)
   }
 
   const handleAddStudent = (e) => {
-      e.preventDefault();
+    e.preventDefault();
+    setStudent(
+        {firstName: firstName,
+        lastName: lastName,
+        hasGoalOne: hasGoalOne,
+        hasGoalTwo: hasGoalTwo,
+        hasGoalThree: hasGoalThree}
+    )
       //post request to students
       //setStudents(response)
       //post request to behaviors
@@ -49,19 +59,12 @@ export default function RosterView() {
                 <label>Last Name</label>
                 <input onChange={handleLastNameChange} value={lastName}></input>
             </div>
-            <div className="goal-selection">
-                <label>I can make good choices even if I am mad.</label>
-                <input type="checkbox" checked={hasGoalOne}  onClick={handleCheckOne}></input>
-            </div>
-            <div className="goal-selection">
-                <label>I can be okay even if others are not okay.</label>
-                <input type="checkbox" checked={hasGoalTwo} onClick={handleCheckTwo}></input>
-            </div>
-            <div className="goal-selection">
-                <label>I can do something even if I don't want to (or it's hard).</label>
-                <input type="checkbox" checked={hasGoalThree} onClick={handleCheckThree}></input>
-            </div>
-            <button onClick={handleAddStudent}>Add Student</button>
+           <FormGroup>
+                <Form.Check type="checkbox" label="I can make good choices even if I am mad." checked={hasGoalOne} onChange={handleCheckOne}/>
+                <Form.Check type="checkbox" label="I can be okay even if others are not okay." checked={hasGoalTwo} onChange={handleCheckTwo}/>
+                <Form.Check type="checkbox" label="I can do something even if I don't want to (or it's hard)." checked={hasGoalThree} onChange={handleCheckThree}/>
+            </FormGroup>
+            <Button  onClick={handleAddStudent}>Add Student</Button>
         </form>
     </div>
   )
