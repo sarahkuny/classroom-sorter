@@ -36,7 +36,7 @@ export default function RosterView() {
       //post request to behaviors
       setFirstName("");
       setLastName("");
-      
+
   }
     return (
     <div>
@@ -49,17 +49,17 @@ export default function RosterView() {
                 <label>Last Name</label>
                 <input onChange={handleLastNameChange} value={lastName}></input>
             </div>
-            <div className="goal-selection" onClick={handleCheckOne}>
+            <div className="goal-selection">
                 <label>I can make good choices even if I am mad.</label>
-                <input type="checkbox"></input>
+                <input type="checkbox" checked={hasGoalOne}  onClick={handleCheckOne}></input>
             </div>
-            <div className="goal-selection" onClick={handleCheckTwo}>
+            <div className="goal-selection">
                 <label>I can be okay even if others are not okay.</label>
-                <input type="checkbox"></input>
+                <input type="checkbox" checked={hasGoalTwo} onClick={handleCheckTwo}></input>
             </div>
             <div className="goal-selection">
                 <label>I can do something even if I don't want to (or it's hard).</label>
-                <input type="checkbox" onClick={handleCheckThree}></input>
+                <input type="checkbox" checked={hasGoalThree} onClick={handleCheckThree}></input>
             </div>
             <button onClick={handleAddStudent}>Add Student</button>
         </form>
