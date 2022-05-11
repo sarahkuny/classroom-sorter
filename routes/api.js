@@ -11,7 +11,7 @@ const sendAllStudents = (req, res) => {
   };
 
 const sendAllStudentsJoined = (req, res) => {
-    db(`SELECT students.first_name, students.last_name, students.group_id, behaviors.has_goal_one, behaviors.has_goal_two, behaviors.has_goal_three FROM students INNER JOIN behaviors ON students.id = behaviors.student_id;`)
+    db(`SELECT students.first_name, students.last_name, students.group_id, behaviors.student_id, behaviors.has_goal_one, behaviors.has_goal_two, behaviors.has_goal_three FROM students INNER JOIN behaviors ON students.id = behaviors.student_id;`)
         .then(results => {
             res.send(results.data);
         })
@@ -26,18 +26,20 @@ router.get('/', function(req, res, next) {
 router.get('/students', (req, res) => {
     sendAllStudents(req, res)
 })
-//delete student by id from students table
+//delete student by id from students and behaviors table
 router.delete('/students/:id', (req,res) => {
-  db(`DELETE from students WHERE id = ${req.params.id};`)
+  db(`DELETE from behaviors WHERE student_id = ${req.params.id};`)
     .then(() => {
-      db(`SELECT * FROM students;`)
-        .then((results) => {
-          res.send(results.data)
+      db(`DELETE FROM students WHERE id = ${req.params.id}`)
+        .then(() => {
+          sendAllStudentsJoined(req, res)
         })
-        .catch(err => res.status(500).send(err));
-    });
+    })
+    .catch((error) => {
+      res.status(500).send(error)
+    })
 });
-
+//get students data from 
 router.get('/students/joined', (req, res) => {
   sendAllStudentsJoined(req, res)
 })
