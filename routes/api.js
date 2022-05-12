@@ -28,8 +28,15 @@ router.get('/', function(req, res, next) {
 
 //GET all students from student table
 router.get('/students', (req, res) => {
-    sendAllStudents(req, res)
+  sendAllStudents(req, res)
 });
+
+router.get('/behaviors', (req, res) => {
+  db(`SELECT * FROM behaviors`)
+    .then((results) => {
+      res.send(results.data)
+    })
+})
 
 //GET students/behavior join table
 router.get('/students/joined', (req, res) => {
@@ -78,7 +85,24 @@ router.delete('/students/:id', (req,res) => {
     })
 });
 
+//SORTING ALGORITHM
+router.get('/students/sort/:groups', (req, res) => {
+  let groupNo = req.params.groups;
 
+  db(`SELECT * FROM behaviors;`)
+    .then()
+})
+
+//get request for behaviors
+//filter array for no-behaviors
+//filter array for behaviors. first students should have score of 3, then 2, then 1
+//create array for each group (2 if group # is 2)
+//loop through behavior array and add group_id (or add to array for each group, then add group_id based on array)
+//fill in rest of groups with non-behavior students
+//put request edit group_id
+//get request joined table (display which goals student has on the group view)
+
+//so frontend receives a get response (/students/joined)
 
     
     
