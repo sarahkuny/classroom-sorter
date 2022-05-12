@@ -98,13 +98,20 @@ router.get('/students/sort/:groups', (req, res) => {
   let scoreOneStudents = [];
   let scoreZeroStudents = [];
   let groupsObj={};
+  let sortingCount = 1;
 
-  //create number of groups (determined by the request)
-  for (let i = 1; i <= groupNo; i++){
-    let key = i.toString();
-    groupsObj[key] = [];
-  };
- 
+
+ //HELPER FUNCTIONS
+//push students to groups
+  const sortToGroups = (student) =>{
+    if (sortingCount != groupNo){
+      groupsObj[sortingCount].push(student)
+      sortingCount++;  
+    } else {
+      groupsObj[sortingCount].push(student);
+      sortingCount = 0;
+    }
+  }
 //push students to corresponding array based on student score
   async function sortStudents() {
     let results = await db(`SELECT * FROM behaviors WHERE score=3;`)
@@ -119,11 +126,43 @@ router.get('/students/sort/:groups', (req, res) => {
     results = await db(`SELECT * FROM behaviors WHERE score=0;`)
     scoreZeroStudents = results.data;
   };
-         
+  //create number of groups (determined by the request)
+  const createGroups = () => {
+    for (let i = 1; i <= groupNo; i++){
+    let key = i.toString();
+    groupsObj[key] = [];
+  }};
+
+
   sortStudents()
     .then(() => {
-      console.log(scoreTwoStudents)
+      createGroups();
     })
+      .then(() => {
+          scoreThreeStudents.forEach((student) => sortToGroups(student));
+          scoreTwoStudents.forEach((student) => sortToGroups(student));
+          scoreOneStudents.forEach((student) => sortToGroups(student));
+          scoreZeroStudents.forEach((student) => sortToGroups(student));
+          console.log(groupsObj);
+      })
+        .then(() => {
+          //loop through groupsObj
+          for (let group in groupsObj){
+            // need key name to know what group id to assign
+            groupsObj[group].forEach((student) => {
+              let studentID = student.student_id;
+              let groupID = group;
+              db(`UPDATE students SET group_id=${groupID} where id=${studentID};`)
+            })  
+          }
+        })
+        .then(() => {
+          sendAllStudentsJoined(req, res);
+        })
+  });     
+
+
+          
 
 
    
@@ -221,7 +260,7 @@ router.get('/students/sort/:groups', (req, res) => {
   //         }
   //       })
   
-});
+
 
 
     
