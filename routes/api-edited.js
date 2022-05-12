@@ -34,7 +34,6 @@ router.get('/students', (req, res) => {
 router.get('/behaviors', (req, res) => {
   db(`SELECT * FROM behaviors`)
     .then((results) => {
-      
       res.send(results.data)
     })
 })
@@ -54,7 +53,7 @@ router.post ('/students', (req, res) => {
       db(`SELECT id FROM students WHERE last_name="${req.body.last_name}" AND first_name="${req.body.first_name}"`)
         .then((results) => {
           let score = req.body.has_goal_one + req.body.has_goal_two + req.body.has_goal_three;
-          db(`INSERT INTO behaviors (has_goal_one, has_goal_two, has_goal_three, student_id, score) SELECT ${req.body.has_goal_one}, ${req.body.has_goal_two}, ${req.body.has_goal_three}, ${results.data[0].id}, ${score} FROM students WHERE last_name="${req.body.last_name}" AND first_name="${req.body.first_name}";`)
+          db(`INSERT INTO behaviors (has_goal_one, has_goal_two, has_goal_three, student_id, score) SELECT ${req.body.has_goal_one}, ${req.body.has_goal_two}, ${req.body.has_goal_three}, ${results.data[0].id}, ${score}  FROM students WHERE last_name="${req.body.last_name}" AND first_name="${req.body.first_name}";`)
             .then(() => {
               db(`SELECT students.first_name, students.last_name, behaviors.has_goal_one, behaviors.has_goal_two, behaviors.has_goal_three, behaviors.score FROM students INNER JOIN behaviors ON students.id = behaviors.student_id;`)
                 .then((results) => {
@@ -104,26 +103,27 @@ router.get('/students/sort/:groups', (req, res) => {
     let key = i.toString();
     groupsObj[key] = [];
   };
-  //score students and push to corresponding array
-  db(`SELECT * FROM behaviors;`)
+  //push students to corresponding array based on student score
+  db(`SELECT * FROM behaviors WHERE score=3;`)
     .then((results) => {
-      let behaviors = results.data;
-      for (let i = 0; i < behaviors.length; i++){
-        let curStudent = behaviors[i];
-        //add weighted score to student object
-        curStudent.score = curStudent.has_goal_one + curStudent.has_goal_two + curStudent.has_goal_three;
-        //push student to corresponding array (based on score)
-        if (curStudent.score === 3){
-          scoreThreeStudents.push(curStudent)
-        } else if (curStudent.score === 2){
-          scoreTwoStudents.push(curStudent)
-        } else if (curStudent.score === 1){
-          scoreOneStudents.push(curStudent)
-        } else {
-          noScoreStudents.push(curStudent)
-        }
-      };
-    })
+        scoreThreeStudents = results.data;
+    });
+    db(`SELECT * FROM behaviors WHERE score=2;`)
+    .then((results) => {
+        scoreTwoStudents = results.data;
+    });
+    db(`SELECT * FROM behaviors WHERE score=1;`)
+    .then((results) => {
+        scoreOneStudents = results.data;
+    });
+    db(`SELECT * FROM behaviors WHERE score=0;`)
+    .then((results) => {
+        noScoreStudents = results.data;
+    });
+    
+
+
+
     //distribute students into groups, starting with highest scored students first
       .then(() => {
         let count = 0;

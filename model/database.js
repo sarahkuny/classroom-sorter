@@ -26,7 +26,7 @@ con.connect(function(err) {
 
   });
   //create behaviors table
-  let sqlBehaviors = "DROP TABLE if exists behaviors; CREATE TABLE behaviors(id INT NOT NULL AUTO_INCREMENT, student_id INT, has_goal_one BOOLEAN not null, has_goal_two BOOLEAN not null, has_goal_three BOOLEAN not null, PRIMARY KEY (id), FOREIGN KEY (student_id) REFERENCES students(id));";
+  let sqlBehaviors = "DROP TABLE if exists behaviors; CREATE TABLE behaviors(id INT NOT NULL AUTO_INCREMENT, student_id INT, has_goal_one BOOLEAN not null, has_goal_two BOOLEAN not null, has_goal_three BOOLEAN not null, score INT, PRIMARY KEY (id), FOREIGN KEY (student_id) REFERENCES students(id));";
   con.query(sqlBehaviors, function (err, result) {
     if (err) throw err;
     console.log("Table creation `behaviors` was successful!");
