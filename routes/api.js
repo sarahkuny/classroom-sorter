@@ -96,102 +96,132 @@ router.get('/students/sort/:groups', (req, res) => {
   let scoreThreeStudents = [];
   let scoreTwoStudents = [];
   let scoreOneStudents = [];
-  let noScoreStudents = [];
+  let scoreZeroStudents = [];
   let groupsObj={};
 
   //create number of groups (determined by the request)
-  for (let i = 0; i < groupNo; i++){
+  for (let i = 1; i <= groupNo; i++){
     let key = i.toString();
     groupsObj[key] = [];
   };
-  //score students and push to corresponding array
-  db(`SELECT * FROM behaviors;`)
-    .then((results) => {
-      let behaviors = results.data;
-      for (let i = 0; i < behaviors.length; i++){
-        let curStudent = behaviors[i];
-        //add weighted score to student object
-        curStudent.score = curStudent.has_goal_one + curStudent.has_goal_two + curStudent.has_goal_three;
-        //push student to corresponding array (based on score)
-        if (curStudent.score === 3){
-          scoreThreeStudents.push(curStudent)
-        } else if (curStudent.score === 2){
-          scoreTwoStudents.push(curStudent)
-        } else if (curStudent.score === 1){
-          scoreOneStudents.push(curStudent)
-        } else {
-          noScoreStudents.push(curStudent)
-        }
-      };
+ 
+//push students to corresponding array based on student score
+  async function sortStudents() {
+    let results = await db(`SELECT * FROM behaviors WHERE score=3;`)
+    scoreThreeStudents = results.data;
+    
+    results = await db(`SELECT * FROM behaviors WHERE score=2;`)
+    scoreTwoStudents = results.data;
+    
+    results = await db(`SELECT * FROM behaviors WHERE score=1;`)
+    scoreOneStudents = results.data;
+
+    results = await db(`SELECT * FROM behaviors WHERE score=0;`)
+    scoreZeroStudents = results.data;
+  };
+         
+  sortStudents()
+    .then(() => {
+      console.log(scoreTwoStudents)
     })
-    //distribute students into groups, starting with highest scored students first
-      .then(() => {
-        let count = 0;
-        //distribute students with a score of three
-        for (let i = 0; i < scoreThreeStudents.length; i++){
-          let curStudent = scoreThreeStudents[i];
-          if (count != groupNo){
-            groupsObj[count].push(curStudent)
-            count++;  
-          } else {
-            groupsObj[count].push(curStudent);
-            count = 0;
-          }
-        };
-        //distribute students with a score of two
-        for (let i = 0; i < scoreTwoStudents.length; i++){
-          let curStudent = scoreTwoStudents[i];
-          if (count != groupNo){
-            groupsObj[count].push(curStudent)
-            count++;  
-          } else {
-            groupsObj[count].push(curStudent);
-            count = 0;
-          }
-        };
-        //distribute students with a score of one
-        for (let i = 0; i < scoreOneStudents.length; i++){
-          let curStudent = scoreOneStudents[i];
-          if (count != groupNo){
-            groupsObj[count].push(curStudent)
-            count++;  
-          } else {
-            groupsObj[count].push(curStudent);
-            count = 0;
-          }
-        };
-        //distribute students with a score of zero
-        for (let i = 0; i < noScoreStudents.length; i++){
-          let curStudent = noScoreStudents[i];
-          if (count != groupNo){
-            groupsObj[count].push(curStudent)
-            count++;  
-          } else {
-            groupsObj[count].push(curStudent);
-            count = 0;
-          }
-        };
-      })
-        .then(() => {
-          console.log(groupsObj)
-        })
-        .then(() => {
-          //loop through groupsObj
-          for (let group in groupsObj){
-            //need key name to know what group id to assign
-            for (let i = 0; i < groupsObj[group].length; i++){
-              let curObj = groupsObj[group][i];
-              let studentID = curObj.student_id;
-              let groupID = group;
-              db(`UPDATE students SET group_id=${groupID} where id=${studentID};`)
-                .then(() => {
-                  sendAllStudentsJoined(req, res);
-                })
-            }
-          }
-        })
+
+
+   
+    
+    
+    
   
-})
+    
+    
+  
+  // //score students and push to corresponding array
+  // db(`SELECT * FROM behaviors;`)
+  //   .then((results) => {
+  //     let behaviors = results.data;
+  //     for (let i = 0; i < behaviors.length; i++){
+  //       let curStudent = behaviors[i];
+  //       //add weighted score to student object
+  //       curStudent.score = curStudent.has_goal_one + curStudent.has_goal_two + curStudent.has_goal_three;
+  //       //push student to corresponding array (based on score)
+  //       if (curStudent.score === 3){
+  //         scoreThreeStudents.push(curStudent)
+  //       } else if (curStudent.score === 2){
+  //         scoreTwoStudents.push(curStudent)
+  //       } else if (curStudent.score === 1){
+  //         scoreOneStudents.push(curStudent)
+  //       } else {
+  //         noScoreStudents.push(curStudent)
+  //       }
+  //     };
+  //   })
+  //   //distribute students into groups, starting with highest scored students first
+  //     .then(() => {
+  //       let count = 0;
+  //       //distribute students with a score of three
+  //       for (let i = 0; i < scoreThreeStudents.length; i++){
+  //         let curStudent = scoreThreeStudents[i];
+  //         if (count != groupNo){
+  //           groupsObj[count].push(curStudent)
+  //           count++;  
+  //         } else {
+  //           groupsObj[count].push(curStudent);
+  //           count = 0;
+  //         }
+  //       };
+  //       //distribute students with a score of two
+  //       for (let i = 0; i < scoreTwoStudents.length; i++){
+  //         let curStudent = scoreTwoStudents[i];
+  //         if (count != groupNo){
+  //           groupsObj[count].push(curStudent)
+  //           count++;  
+  //         } else {
+  //           groupsObj[count].push(curStudent);
+  //           count = 0;
+  //         }
+  //       };
+  //       //distribute students with a score of one
+  //       for (let i = 0; i < scoreOneStudents.length; i++){
+  //         let curStudent = scoreOneStudents[i];
+  //         if (count != groupNo){
+  //           groupsObj[count].push(curStudent)
+  //           count++;  
+  //         } else {
+  //           groupsObj[count].push(curStudent);
+  //           count = 0;
+  //         }
+  //       };
+  //       //distribute students with a score of zero
+  //       for (let i = 0; i < noScoreStudents.length; i++){
+  //         let curStudent = noScoreStudents[i];
+  //         if (count != groupNo){
+  //           groupsObj[count].push(curStudent)
+  //           count++;  
+  //         } else {
+  //           groupsObj[count].push(curStudent);
+  //           count = 0;
+  //         }
+  //       };
+  //     })
+  //       .then(() => {
+  //         console.log(groupsObj)
+  //       })
+  //       .then(() => {
+  //         //loop through groupsObj
+  //         for (let group in groupsObj){
+  //           //need key name to know what group id to assign
+  //           for (let i = 0; i < groupsObj[group].length; i++){
+  //             let curObj = groupsObj[group][i];
+  //             let studentID = curObj.student_id;
+  //             let groupID = group;
+  //             db(`UPDATE students SET group_id=${groupID} where id=${studentID};`)
+  //               .then(() => {
+  //                 sendAllStudentsJoined(req, res);
+  //               })
+  //           }
+  //         }
+  //       })
+  
+});
 
 
     
