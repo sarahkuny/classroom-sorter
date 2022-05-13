@@ -15,12 +15,11 @@ This app is a tool for teachers and administrators in schools. A user will input
 ## Back-End
 
 ### Database Schema
-![Database Schema](readme-assets/database-schema-classroom-sorter.png)
+![Database Schema](readme-assets/mvp-database-schema.png)
 
 ### API Routes
-![API Routes 1](readme-assets/api-routes-1.png)
-![API Routes 2](readme-assets/api-routes-2.png)
-![API Routes 3](readme-assets/api-routes-3.png)
+![API Routes 1](readme-assets/mvp-api-routes.png)
+
 
 
 
