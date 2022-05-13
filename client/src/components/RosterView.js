@@ -41,9 +41,9 @@ export default function RosterView() {
         hasGoalTwo: hasGoalTwo,
         hasGoalThree: hasGoalThree}
     )
-      //post request to students
+      //post request 
       //setStudents(response)
-      //post request to behaviors
+      
       setFirstName("");
       setLastName("");
 
@@ -65,6 +65,8 @@ export default function RosterView() {
                 <Form.Check type="checkbox" label="I can do something even if I don't want to (or it's hard)." checked={hasGoalThree} onChange={handleCheckThree}/>
             </FormGroup>
             <Button  onClick={handleAddStudent}>Add Student</Button>
+            <h2>Students</h2>
+            {/* map through students to display */}
         </form>
     </div>
   )

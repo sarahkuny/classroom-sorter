@@ -1,1 +1,65 @@
 
+@font-face {
+    font-family: "Mogena";
+    src: url("./assets/Mogena.ttf");
+  }
+  
+  @font-face {
+    font-family: "Made Dillan";
+    src: url("./assets/Made-Dillan.otf");
+  }
+
+  @font-face {
+    font-family: "Aubrey";
+    src: url("./assets/aubrey.TTF");
+  }
+
+.app {
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+/* NAV-BAR */
+.nav-bar {
+    background-color: white;
+    height: 7vh;
+    font-family: "Made Dillan";
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-list > a {
+    margin: 1rem 1rem;
+    text-decoration: none;
+    color: black;
+}
+
+/* BANNER */
+.banner {
+    background-image: url("assets/apple-held.jpg");
+    background-color: rgba(255, 255, 255, 0.25);
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 93vh;
+    font-family: "Mogena";
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner > h1 {
+    font-size: 7rem;
+    margin-top: 6rem;
+}
+
