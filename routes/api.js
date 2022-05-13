@@ -91,7 +91,7 @@ router.delete('/students/:id', (req,res) => {
 //Helper Functions
 
 
-router.get('/students/sort/:groups', (req, res) => {
+router.put('/students/sort/:groups', (req, res) => {
   let groupNo = req.params.groups;
   let scoreThreeStudents = [];
   let scoreTwoStudents = [];
@@ -109,7 +109,7 @@ router.get('/students/sort/:groups', (req, res) => {
       sortingCount++;  
     } else {
       groupsObj[sortingCount].push(student);
-      sortingCount = 0;
+      sortingCount = 1;
     }
   }
 //push students to corresponding array based on student score
@@ -134,16 +134,17 @@ router.get('/students/sort/:groups', (req, res) => {
   }};
 
 
-  sortStudents()
+ sortStudents()
     .then(() => {
       createGroups();
+      console.log(groupsObj)
     })
       .then(() => {
           scoreThreeStudents.forEach((student) => sortToGroups(student));
           scoreTwoStudents.forEach((student) => sortToGroups(student));
           scoreOneStudents.forEach((student) => sortToGroups(student));
           scoreZeroStudents.forEach((student) => sortToGroups(student));
-          console.log(groupsObj);
+          console.log(scoreThreeStudents);
       })
         .then(() => {
           //loop through groupsObj
@@ -156,9 +157,9 @@ router.get('/students/sort/:groups', (req, res) => {
             })  
           }
         })
-        .then(() => {
-          sendAllStudentsJoined(req, res);
-        })
+          .then(() => {
+            res.send("Students sorted!")
+          })
   });     
 
 
