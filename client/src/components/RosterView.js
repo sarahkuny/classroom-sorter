@@ -88,6 +88,11 @@ export default function RosterView() {
         hasGoalThree: hasGoalThree}
     ) 
       addStudent();
+    setFirstName("");
+    setLastName("");
+    setHasGoalOne(false);
+    setHasGoalTwo(false);
+    setHasGoalThree(false)
   }
 
 
