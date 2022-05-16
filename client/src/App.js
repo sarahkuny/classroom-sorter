@@ -11,8 +11,8 @@ function App() {
     <div className="app">
       <Navbar />
       <Banner />
-      <GroupView />
       <RosterView />
+      <GroupView />
     </div>
   );
 }

@@ -42,6 +42,11 @@
     color: black;
 }
 
+.nav-list > a:hover {
+    color: rgb(243, 169, 32);
+}
+
+
 /* BANNER */
 .banner {
     background-image: url("assets/apple-held.jpg");
@@ -51,8 +56,8 @@
     background-position: center;
     background-size: cover;
     height: 93vh;
-    font-family: "Mogena";
-    color: white;
+    font-family: "Made Dillan";
+    color: rgb(246, 238, 181);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,6 +65,17 @@
 
 .banner > h1 {
     font-size: 7rem;
-    margin-top: 6rem;
+    margin-top: 3%;
 }
 
+.arrow {
+    border: solid rgb(246, 238, 181);
+    border-width: 0 3px 3px 0;
+    color: blue;
+    display: inline-block;
+    padding: 3px;
+}
+
+.down {
+    transform: rotate(45deg);
+}
