@@ -137,14 +137,12 @@ router.put('/students/sort/:groups', (req, res) => {
  sortStudents()
     .then(() => {
       createGroups();
-      console.log(groupsObj)
     })
       .then(() => {
           scoreThreeStudents.forEach((student) => sortToGroups(student));
           scoreTwoStudents.forEach((student) => sortToGroups(student));
           scoreOneStudents.forEach((student) => sortToGroups(student));
           scoreZeroStudents.forEach((student) => sortToGroups(student));
-          console.log(scoreThreeStudents);
       })
         .then(() => {
           //loop through groupsObj
