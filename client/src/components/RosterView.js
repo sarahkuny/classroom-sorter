@@ -100,52 +100,58 @@ export default function RosterView() {
 
 
     return (
+      <>
     <div className="roster-view">
-        
-        <div className="roster">
-            <h2>Students</h2>
-            <div className="student-roster">
-              <h5>Name</h5>
-              <h5>Goals</h5>
-            </div>
-            {students.map(student => (
-              <div key={student.id} className="student-roster">
-                <p>
-                  {student.first_name} {student.last_name}
-                </p>
-                {student.has_goal_one  ? <p>Goal One</p> : ""}
-                {student.has_goal_two ? <p>Goal Two</p> : ""}
-                {student.has_goal_three ? <p>Goal Three</p> : ""}
-                <button className="btn-delete">Delete</button>
-              </div>
-
-              
-        ))}
-            </div>
-
-            <div className="student-form">
-          <h5>Add Student</h5>
-          <form onSubmit={handleAddStudent}>
-              <div className="name-input">
-                  <label>First Name</label>
-                  <input type="text" onChange={handleFirstNameChange} value={firstName}></input>
-              </div>
-              <div className="name-input">
-                  <label>Last Name</label>
-                  <input type="text" onChange={handleLastNameChange} value={lastName}></input>
-              </div>
-              <div className="form-checks">
-            <FormGroup>
-                  <Form.Check type="checkbox" label="I can make good choices even if I am mad." checked={hasGoalOne} onChange={handleCheckOne}/>
-                  <Form.Check type="checkbox" label="I can be okay even if others are not okay." checked={hasGoalTwo} onChange={handleCheckTwo}/>
-                  <Form.Check type="checkbox" label="I can do something even if I don't want to (or it's hard)." checked={hasGoalThree} onChange={handleCheckThree}/>
-              </FormGroup>
-              <button type="submit">Add Student</button>
-              </div>
-          </form>
+      {/* Display Roster */}
+      <div className="roster">
+        <h2>Students</h2>
+        <div className="student-roster">
+          <h5>Name</h5>
+          <h5>Goals</h5>
         </div>
-         
-        
+        {students.map(student => (
+          <div key={student.id} className="student-roster">
+              <p>
+                {student.first_name} {student.last_name}
+              </p>
+              {student.has_goal_one  ? <p>Goal One</p> : ""}
+              {student.has_goal_two ? <p>Goal Two</p> : ""}
+              {student.has_goal_three ? <p>Goal Three</p> : ""}
+              <button className="btn-delete">Delete</button>
+          </div>))}
+      </div>
+
+      {/* Add Student Form */}
+      <div className="student-form">
+        <h5>Add Student</h5>
+        <form onSubmit={handleAddStudent}>
+          <div className="name-input">
+            <label>First Name</label>
+            <input type="text" onChange={handleFirstNameChange} value={firstName}></input>
+          </div>
+          <div className="name-input">
+            <label>Last Name</label>
+            <input type="text" onChange={handleLastNameChange} value={lastName}></input>
+          </div>
+          <div className="form-checks">
+            <FormGroup>
+              <Form.Check type="checkbox" label="I can make good choices even if I am mad." checked={hasGoalOne} onChange={handleCheckOne}/>
+              <Form.Check type="checkbox" label="I can be okay even if others are not okay." checked={hasGoalTwo} onChange={handleCheckTwo}/>
+              <Form.Check type="checkbox" label="I can do something even if I don't want to (or it's hard)." checked={hasGoalThree} onChange={handleCheckThree}/>
+            </FormGroup>
+            <button type="submit">Add Student</button>
+          </div>
+        </form>
+      </div>          
     </div>
+    {/* Create Groups */}
+    <div className="create-groups">
+      <div className="create-groups-input">
+        <label>How many groups would you like to create?</label>
+        <input type="number" min="1"></input>
+      </div>
+      <button type="submit">Create Groups</button>
+    </div>
+    </>
   )
 }
