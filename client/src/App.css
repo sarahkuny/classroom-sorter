@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@400;600;700&family=Montserrat:wght@200;400;600&family=Playfair+Display:wght@400;600&family=Poppins:wght@100;200;400;500&family=Roboto+Condensed:wght@300&family=Roboto:wght@100;400;700;900&display=swap');
+
 @font-face {
     font-family: "Mogena";
     src: url("./assets/Mogena.ttf");
@@ -68,14 +70,76 @@
     margin-top: 3%;
 }
 
-.arrow {
-    border: solid rgb(246, 238, 181);
-    border-width: 0 3px 3px 0;
-    color: blue;
-    display: inline-block;
-    padding: 3px;
+/* RosterView */
+.roster-view {
+    margin: 3% auto;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: space-evenly;
+
+}
+/* form */
+.student-form {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
 }
 
-.down {
-    transform: rotate(45deg);
+.student-form > h5{
+    font-family: "Made Dillan";
+}
+
+.name-input {
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 0.5rem;
+}
+
+.form-checks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+button {
+    color: white;
+    background-color: rgb(251, 175, 33);
+    font-family: "Poppins";
+    font-weight: 500;
+    border: none;
+    border-radius: 10px !important; 
+}
+/* Roster */
+.roster {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 70vh;
+    padding: 1rem 0rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    overflow-y: scroll;
+}
+
+.roster > h2 {
+    font-family: "Made Dillan";
+    font-weight: bold;
+}
+
+.student-roster {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0 1rem;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.student-roster > h5 {
+    font-family: "Made Dillan";
+    margin-bottom: 1rem;
+    color: rgb(251, 175, 33);
+    padding: 0 1rem;
 }

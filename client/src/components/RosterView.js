@@ -13,10 +13,10 @@ export default function RosterView() {
   
   useEffect(() => {
     getStudents()
-  }, [students]);
+  }, []);
 
   const getStudents = () => {
-    fetch("/api/students")
+    fetch("/api/students/joined")
       .then(response => response.json())
       .then(students => {
         setStudents(students);
@@ -52,7 +52,7 @@ export default function RosterView() {
   }
 
 
-  const addStudent = (e) => {
+  const addStudent = () => {
     fetch("/api/students", {
           method:"POST",
           headers: {
@@ -66,13 +66,13 @@ export default function RosterView() {
             has_goal_three: hasGoalThree
           })
         })
-        .then((response) => {
-                response.data.json()
-              })
-                .then((data) => {
-                  setStudents(data)
-                }).catch((error) => {
-                  console.log(error)
+        .then(response => response.json()
+        )
+          .then((data) => {
+            setStudents(data);
+          })
+            .catch((error) => {
+              console.log(error)
                 })
     
   }
@@ -87,7 +87,7 @@ export default function RosterView() {
         hasGoalTwo: hasGoalTwo,
         hasGoalThree: hasGoalThree}
     ) 
-      addStudent();
+    addStudent();
     setFirstName("");
     setLastName("");
     setHasGoalOne(false);
@@ -100,32 +100,50 @@ export default function RosterView() {
 
 
     return (
-    <div>
-        <form onSubmit={handleAddStudent}>
-            <div className="name-input">
-                <label>First Name</label>
-                <input type="text" onChange={handleFirstNameChange} value={firstName}></input>
-            </div>
-            <div className="name-input">
-                <label>Last Name</label>
-                <input type="text" onChange={handleLastNameChange} value={lastName}></input>
-            </div>
-           <FormGroup>
-                <Form.Check type="checkbox" label="I can make good choices even if I am mad." checked={hasGoalOne} onChange={handleCheckOne}/>
-                <Form.Check type="checkbox" label="I can be okay even if others are not okay." checked={hasGoalTwo} onChange={handleCheckTwo}/>
-                <Form.Check type="checkbox" label="I can do something even if I don't want to (or it's hard)." checked={hasGoalThree} onChange={handleCheckThree}/>
-            </FormGroup>
-            <button type="submit" >Add Student</button>
-        </form>
+    <div className="roster-view">
+        
+        <div className="roster">
             <h2>Students</h2>
+            <div className="student-roster">
+              <h5>Name</h5>
+              <h5>Goals</h5>
+            </div>
             {students.map(student => (
-              <div key={student.id}>
+              <div key={student.id} className="student-roster">
                 <p>
                   {student.first_name} {student.last_name}
                 </p>
-                
+                {student.has_goal_one  ? <p>Goal One</p> : ""}
+                {student.has_goal_two ? <p>Goal Two</p> : ""}
+                {student.has_goal_three ? <p>Goal Three</p> : ""}
+                <button className="btn-delete">Delete</button>
               </div>
+
+              
         ))}
+            </div>
+
+            <div className="student-form">
+          <h5>Add Student</h5>
+          <form onSubmit={handleAddStudent}>
+              <div className="name-input">
+                  <label>First Name</label>
+                  <input type="text" onChange={handleFirstNameChange} value={firstName}></input>
+              </div>
+              <div className="name-input">
+                  <label>Last Name</label>
+                  <input type="text" onChange={handleLastNameChange} value={lastName}></input>
+              </div>
+              <div className="form-checks">
+            <FormGroup>
+                  <Form.Check type="checkbox" label="I can make good choices even if I am mad." checked={hasGoalOne} onChange={handleCheckOne}/>
+                  <Form.Check type="checkbox" label="I can be okay even if others are not okay." checked={hasGoalTwo} onChange={handleCheckTwo}/>
+                  <Form.Check type="checkbox" label="I can do something even if I don't want to (or it's hard)." checked={hasGoalThree} onChange={handleCheckThree}/>
+              </FormGroup>
+              <button type="submit">Add Student</button>
+              </div>
+          </form>
+        </div>
          
         
     </div>
