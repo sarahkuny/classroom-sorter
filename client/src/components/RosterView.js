@@ -96,8 +96,11 @@ export default function RosterView() {
   }
 
 
-  //const handleDelete = (e) => {}
-
+  const handleDelete = (id) => {
+    fetch(`api/students/${id}`, { method: "DELETE" })
+      .then(response => response.json())
+      .then(data => setStudents(data));
+  }
 
     return (
       <div className="rosterview">
@@ -109,15 +112,15 @@ export default function RosterView() {
           <h5>Name</h5>
           <h5>Goals</h5>
         </div>
-        {students.map(student => (
-          <div key={student.id} className="student-roster">
+        {students && students.map(student => (
+          <div key={student.student_id} className="student-roster">
               <p>
                 {student.first_name} {student.last_name}
               </p>
               {student.has_goal_one  ? <p>Goal One</p> : ""}
               {student.has_goal_two ? <p>Goal Two</p> : ""}
               {student.has_goal_three ? <p>Goal Three</p> : ""}
-              <button className="btn-delete">Delete</button>
+              <button  onClick={() => handleDelete(student.student_id)} >Delete</button>
           </div>))}
       </div>
 
@@ -146,17 +149,17 @@ export default function RosterView() {
           </div>
         </form>
       </div> 
+      {/* Create Groups */}
       <div className="create-groups">
-      <h1>Ready to Create Your Groups?</h1>
-      <div className="create-groups-input">
-        <label>How many groups would you like to create?</label>
-        <input type="number" min="1"></input>
-      </div>
-      <button type="submit">Create Groups</button>
-    </div>
-      </div>         
-    </div>
-    {/* Create Groups */}
+        <div className="create-groups-input">
+          <label>How many groups would you like to create?</label>
+          <input type="number" min="1"></input>
+        </div>
+        <button type="submit">Create Groups</button>
+     </div>
+    </div>         
+  </div>
+    
     
     </div>
   )
