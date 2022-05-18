@@ -68,17 +68,30 @@
 .banner > h1 {
     font-size: 7rem;
     margin-top: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 /* RosterView */
-.roster-view {
-    margin: 3% auto;
-    display: flex;
-    align-items: center;
+.rosterview {
+    padding-bottom: 5rem;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: space-evenly;
 
 }
+
+.roster-view {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
 /* form */
 .student-form {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -142,4 +155,29 @@ button {
     margin-bottom: 1rem;
     color: rgb(251, 175, 33);
     padding: 0 1rem;
+}
+
+/* Create Groups */
+.create-groups {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(198, 249, 131);
+    width: 70%;
+    height: 20%;
+    margin-top: 2rem;
+}
+
+.create-groups-input {
+    padding-bottom: 1rem;
+}
+
+.create-groups > h1 {
+    color: white;
+    font-family: "Made Dillan";
+}
+
+.create-groups > button {
+    background-color: white;
+    color:rgb(251, 175, 33)
 }

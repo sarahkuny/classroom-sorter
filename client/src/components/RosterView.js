@@ -100,7 +100,7 @@ export default function RosterView() {
 
 
     return (
-      <>
+      <div className="rosterview">
     <div className="roster-view">
       {/* Display Roster */}
       <div className="roster">
@@ -122,6 +122,9 @@ export default function RosterView() {
       </div>
 
       {/* Add Student Form */}
+     <div className="forms">
+
+     
       <div className="student-form">
         <h5>Add Student</h5>
         <form onSubmit={handleAddStudent}>
@@ -142,16 +145,19 @@ export default function RosterView() {
             <button type="submit">Add Student</button>
           </div>
         </form>
-      </div>          
-    </div>
-    {/* Create Groups */}
-    <div className="create-groups">
+      </div> 
+      <div className="create-groups">
+      <h1>Ready to Create Your Groups?</h1>
       <div className="create-groups-input">
         <label>How many groups would you like to create?</label>
         <input type="number" min="1"></input>
       </div>
       <button type="submit">Create Groups</button>
     </div>
-    </>
+      </div>         
+    </div>
+    {/* Create Groups */}
+    
+    </div>
   )
 }
