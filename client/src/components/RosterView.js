@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import {Button, Form, FormControl, FormGroup, ToggleButton} from 'react-bootstrap'
 
-export default function RosterView() {
+export default function RosterView(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [hasGoalOne, setHasGoalOne] = useState(false);
@@ -102,6 +102,11 @@ export default function RosterView() {
       .then(data => setStudents(data));
   }
 
+  const handleCreateGroups = (e) => {
+    e.preventDefault();
+    props.createGroups(e.target.groups.value);
+  }
+  
     return (
       <div className="rosterview">
     <div className="roster-view">
@@ -151,11 +156,13 @@ export default function RosterView() {
       </div> 
       {/* Create Groups */}
       <div className="create-groups">
+        <form onSubmit={handleCreateGroups}> 
         <div className="create-groups-input">
           <label>How many groups would you like to create?</label>
-          <input type="number" min="1"></input>
+          <input type="number" min="1" name="groups"></input>
         </div>
         <button type="submit">Create Groups</button>
+        </form>
      </div>
     </div>         
   </div>
