@@ -12,10 +12,23 @@ function App() {
   const [groupNo, setGroupNo] = useState();
 
   const handleCreateGroups = (groupNo) => {
-    console.log(groupNo)
-    //SORT REQUEST
-    //GET JOINED
-    //SEND JOINED TO GROUPVIEW THROUGH PROPS
+    //hit sorting endpoint
+    fetch(`api/students/sort/${groupNo}`,  {
+      method:"PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    })
+      .then(() => {
+        fetch("/api/students/joined")
+      .then(response => response.json())
+      .then(students => {
+        setStudents(students);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      })
     setGroupNo(groupNo);
     setIsGroupView(true);
   }
