@@ -56,7 +56,7 @@ router.post ('/students', (req, res) => {
           let score = req.body.has_goal_one + req.body.has_goal_two + req.body.has_goal_three;
           db(`INSERT INTO behaviors (has_goal_one, has_goal_two, has_goal_three, student_id, score) SELECT ${req.body.has_goal_one}, ${req.body.has_goal_two}, ${req.body.has_goal_three}, ${results.data[0].id}, ${score} FROM students WHERE last_name="${req.body.last_name}" AND first_name="${req.body.first_name}";`)
             .then(() => {
-              db(`SELECT students.id, students.first_name, students.last_name, behaviors.has_goal_one, behaviors.has_goal_two, behaviors.has_goal_three, behaviors.score FROM students INNER JOIN behaviors ON students.id = behaviors.student_id;`)
+              db(`SELECT students.first_name, students.last_name, students.group_id, behaviors.student_id, behaviors.has_goal_one, behaviors.has_goal_two, behaviors.has_goal_three, behaviors.score FROM students INNER JOIN behaviors ON students.id = behaviors.student_id;`)
                 .then((results) => {
                   res.send(results.data)
                 })
