@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import {Button, Form, FormControl, FormGroup, ToggleButton} from 'react-bootstrap'
+import {Form, FormGroup, } from 'react-bootstrap'
 
 export default function RosterView(props) {
   const [firstName, setFirstName] = useState("");
@@ -10,7 +10,6 @@ export default function RosterView(props) {
   const [hasGoalThree, setHasGoalThree] = useState(false);
   const [student, setStudent] = useState({});
   const [students, setStudents] = useState([]);
-  
   useEffect(() => {
     getStudents()
   }, []);
@@ -102,15 +101,20 @@ export default function RosterView(props) {
       .then(data => setStudents(data));
   }
 
+ 
+
   const handleCreateGroups = (e) => {
     e.preventDefault();
     props.createGroups(e.target.groups.value);
   }
+
+  
   
     return (
       <div className="rosterview">
     <div className="roster-view">
       {/* Display Roster */}
+      
       <div className="roster">
         <h2>Students</h2>
         <div className="student-roster">
@@ -122,10 +126,11 @@ export default function RosterView(props) {
               <p>
                 {student.first_name} {student.last_name}
               </p>
-              {student.has_goal_one  ? <p>Goal One</p> : ""}
-              {student.has_goal_two ? <p>Goal Two</p> : ""}
-              {student.has_goal_three ? <p>Goal Three</p> : ""}
-              <button  onClick={() => handleDelete(student.student_id)} >Delete</button>
+              <div className="roster-btns">
+                {/* <button onClick={handleEdit}>Edit</button> */}
+                <button  onClick={() => handleDelete(student.student_id)} >Delete</button>
+              </div>
+              
           </div>))}
       </div>
 
@@ -164,10 +169,9 @@ export default function RosterView(props) {
           <button type="submit">Create Groups</button>
         </div>
       </form>
-    </div>         
+    </div>        
   </div>
-    
-    
+  <button onClick={props.switchToGroups}>View Groups</button> 
     </div>
   )
 }

@@ -32,21 +32,24 @@ export default function GroupView(props) {
 
  
   return (
-    <div>
-    
-    {Object.keys(groups).map((group) => (
-      <div>
-        <h4>Group {group}</h4>
-        <ul>
-          {groups[group].map((student) => (
-            <li>{student.first_name}</li>
-          ))}
-        </ul>
-      </div>
-    ))}
-    <button>Edit Students</button>
+    <>
+    <div className="group-view">
+      <h1>Sorted Groups</h1>
+      <div className="grid">
+        {Object.keys(groups).map((group) => (
+          <div className="group">
+            <h4>Group {group}</h4>
+            <ul>
+              {groups[group].map((student) => (
+                <li>{student.first_name} {student.last_name}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        </div>
+      <button className="groupview-btn" onClick={props.switchToRoster}>Edit Students</button>
     </div>
-
+    </>
   )
 }
 

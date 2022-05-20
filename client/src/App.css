@@ -109,6 +109,7 @@
 /* form */
 .forms {
     width: 40%;
+    max-width: 500px;
 }
 
 .student-form {
@@ -118,6 +119,7 @@
     align-items: center;
     padding: 1rem;
     background-color: white;
+    
 }
 
 .student-form > h5{
@@ -183,6 +185,10 @@ button {
     padding: 0 1rem;
 }
 
+.roster-btns > button {
+    margin: 0 .5rem;
+}
+
 /* Create Groups */
 .create-groups {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -206,4 +212,61 @@ button {
 
 .create-groups > button {
     margin: 1rem 1rem;
+}
+
+/* GroupView */
+.group-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(250, 248, 234);
+    height: 100%;
+}
+
+.group-view > h1 {
+    color:rgb(251, 175, 33);
+    font-family: "Made Dillan";
+    font-size: 4rem;
+    padding: 2rem 0;
+    background-color: white;
+    width: 100vw;
+    text-align: center;
+    box-shadow: 0 4px 2px -2px gray;
+    text-shadow: 2px 2px rgb(245, 161, 6);
+}
+
+
+.grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: auto;
+    width: 100%;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+
+.group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    background-color: white;
+    padding: 1rem 0;
+    min-width: 20vw;
+    
+}
+
+.group > h4{
+    
+    font-family: "Made Dillan";
 }

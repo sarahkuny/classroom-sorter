@@ -31,6 +31,7 @@ function App() {
         .then(() => {
           setGroupNo(groupNo);
     setIsGroupView(true);
+    setIsBannerView(false)
         })
       .catch(error => {
         console.log(error);
@@ -38,14 +39,18 @@ function App() {
       })
   }
 
-  const changeView = ()=> {
+  const changeBannerView = ()=> {
     setIsBannerView(state => !state)
+  }
+
+  const changeGroupView = () => {
+    setIsGroupView(state => !state)
   }
   return (
     <div className="app">
       {/* <Navbar /> */}
-      {isBannerView ? <Banner switchToRoster={changeView} /> : ""}
-      {isGroupView ? <GroupView  students={students} groupNo = {groupNo} /> : <RosterView createGroups={(groupNo) => handleCreateGroups(groupNo)} /> }
+      {isBannerView ? <Banner switchToRoster={changeBannerView} /> : ""}
+      {isGroupView ? <GroupView  students={students} groupNo = {groupNo} switchToRoster={changeGroupView}/> : <RosterView createGroups={(groupNo) => handleCreateGroups(groupNo)} switchToGroups={changeGroupView} /> }
     </div>
   );
 }
