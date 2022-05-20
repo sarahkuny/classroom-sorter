@@ -11,7 +11,10 @@ function App() {
   const [students, setStudents] = useState([]);
   const [groupNo, setGroupNo] = useState();
 
-  const handleCreateGroups = (groupNo) => {
+  useEffect(() => {
+
+  }, [])
+  const  handleCreateGroups = (groupNo) => {
     //hit sorting endpoint
     fetch(`api/students/sort/${groupNo}`,  {
       method:"PUT",
@@ -25,12 +28,15 @@ function App() {
       .then(students => {
         setStudents(students);
       })
+        .then(() => {
+          setGroupNo(groupNo);
+    setIsGroupView(true);
+        })
       .catch(error => {
         console.log(error);
       });
       })
-    setGroupNo(groupNo);
-    setIsGroupView(true);
+   
   }
 
   return (

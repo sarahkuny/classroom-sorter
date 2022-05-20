@@ -2,12 +2,10 @@ import React, {useEffect, useState} from 'react'
 
 export default function GroupView(props) {
   const [groups, setGroups] = useState({});
+  const [sortedStudents, setSortedStudents] = useState([]);
   
   useEffect(() => {
-    filterStudents();
-    //in JSX loop through groupsObj
-      //map through each array
-    
+    setGroups(filterStudents());
     }, []);
 
   const filterStudents = () => {
@@ -18,23 +16,35 @@ export default function GroupView(props) {
       groupsObj[key] = [];
     }
     //sort students into corresponding array
-    for (let i = 1; i <= props.groupNo; i++){
+    for (let i = 0; i < props.students.length; i++){
       let student = props.students[i];
-      if (student.group_id === i){
-        groupsObj[i.toString()].push(student)
+      for (let j = 1; j <= props.groupNo; j++){
+        if (student.group_id === j){
+          groupsObj[j.toString()].push(student)
+        }
       }
     }
-    console.log(groupsObj)
     //set state to groupsObj that holds group arrays
-    setGroups(groupsObj);
+    return groupsObj
   }
+    
+  
   
 
  
   return (
     <div>
-    {/* access props.students to get data
-    filter by group no (up to groupNo passed in --> props.groupNo) */}
+    
+    {Object.keys(groups).map((group) => (
+      <div>
+        <h4>Group {group}</h4>
+        <ul>
+          {groups[group].map((student) => (
+            <li>{student.first_name}</li>
+          ))}
+        </ul>
+      </div>
+    ))}
     <button>Edit Students</button>
     </div>
 

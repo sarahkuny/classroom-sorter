@@ -114,8 +114,8 @@ export default function RosterView(props) {
       <div className="roster">
         <h2>Students</h2>
         <div className="student-roster">
-          <h5>Name</h5>
-          <h5>Goals</h5>
+          {/* <h5>Name</h5>
+          <h5>Goals</h5> */}
         </div>
         {students && students.map(student => (
           <div key={student.student_id} className="student-roster">
@@ -155,15 +155,15 @@ export default function RosterView(props) {
         </form>
       </div> 
       {/* Create Groups */}
-      <div className="create-groups">
-        <form onSubmit={handleCreateGroups}> 
-        <div className="create-groups-input">
-          <label>How many groups would you like to create?</label>
-          <input type="number" min="1" name="groups"></input>
+      <form onSubmit={handleCreateGroups}> 
+        <div className="create-groups">
+          <div className="create-groups-input">
+            <label>How many groups would you like to create?</label>
+            <input type="number" min="1" name="groups"></input>
+          </div>
+          <button type="submit">Create Groups</button>
         </div>
-        <button type="submit">Create Groups</button>
-        </form>
-     </div>
+      </form>
     </div>         
   </div>
     
