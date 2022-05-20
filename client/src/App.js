@@ -41,7 +41,7 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar />
+      {/* <Navbar /> */}
       <Banner />
       {isGroupView ? <GroupView  students={students} groupNo = {groupNo} /> : <RosterView createGroups={(groupNo) => handleCreateGroups(groupNo)} /> }
     </div>
