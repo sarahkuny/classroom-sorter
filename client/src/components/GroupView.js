@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 
 export default function GroupView(props) {
   const [groups, setGroups] = useState({});
-  const [sortedStudents, setSortedStudents] = useState([]);
   
   useEffect(() => {
     setGroups(filterStudents());

@@ -8,11 +8,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   const [isGroupView, setIsGroupView] = useState(false);
+  const [isBannerView, setIsBannerView] = useState(true);
   const [students, setStudents] = useState([]);
   const [groupNo, setGroupNo] = useState();
 
   useEffect(() => {
-
   }, [])
   const  handleCreateGroups = (groupNo) => {
     //hit sorting endpoint
@@ -36,13 +36,15 @@ function App() {
         console.log(error);
       });
       })
-   
   }
 
+  const changeView = ()=> {
+    setIsBannerView(state => !state)
+  }
   return (
     <div className="app">
       {/* <Navbar /> */}
-      <Banner />
+      {isBannerView ? <Banner switchToRoster={changeView} /> : ""}
       {isGroupView ? <GroupView  students={students} groupNo = {groupNo} /> : <RosterView createGroups={(groupNo) => handleCreateGroups(groupNo)} /> }
     </div>
   );

@@ -63,14 +63,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    padding: 3rem 0;
 }
 
 .banner > h1 {
     font-size: 7rem;
-    margin-top: 3%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    
+}
+
+.banner-btn {
+    background-color: rgba(254, 251, 225, .25);
+    color:rgb(254, 251, 225);
+    border: 2px solid rgb(254, 251, 225);
+    height: 60px;
+    width: 400px;
+    font-size: 2rem;
+    
+}
+
+.banner-btn:hover {
+    background-color:rgb(251, 175, 33);
 }
 
 /* RosterView */
@@ -81,7 +94,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-
+    background-color: rgb(250, 248, 234);
 }
 
 .roster-view {
@@ -91,6 +104,7 @@
     justify-content: space-evenly;
     margin-top: 2rem;
 }
+
 
 /* form */
 .forms {
@@ -103,6 +117,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    background-color: white;
 }
 
 .student-form > h5{
@@ -144,6 +159,7 @@ button {
     padding: 1rem 0rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     overflow-y: scroll;
+    background-color: white;
 }
 
 .roster > h2 {
@@ -175,19 +191,17 @@ button {
     padding: 1rem;
     margin-top: 2rem;
     justify-content: space-evenly;
-    
+    background-color: white;
 }
 
 .create-groups-input {
     display: flex;
     justify-content: space-evenly;
     padding-bottom: 0.5rem;
-    
 }
 
-.create-groups > h1 {
-    color: black;
-    font-family: "Made Dillan";
+.create-groups-input > input {
+    width: 60px;
 }
 
 .create-groups > button {
