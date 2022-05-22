@@ -83,7 +83,7 @@
 }
 
 .banner-btn:hover {
-    background-color:rgb(251, 175, 33);
+    background-color:#aebc80;
 }
 
 /* RosterView */
@@ -202,8 +202,9 @@ button {
     align-items: flex-start;
     justify-content:center !important;
     width: 10rem;
-    color: rgb(230, 50, 50);
+    color: #7b905a;
     font-family: "Poppins";
+    font-weight: 500;
     font-size: .75rem;
     padding: 0 .5rem;
 }
@@ -236,7 +237,7 @@ button {
 
 
 .switch-view-btn {
-    background-color: rgb(121, 168, 244);
+    background-color: #aebc80;
     padding: 1rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
@@ -261,14 +262,14 @@ button {
     width: 100vw;
     text-align: center;
     box-shadow: 0 4px 2px -2px gray;
-    text-shadow: 2px 2px rgb(245, 161, 6);
+    text-shadow: 2px 2px #c8daabcc;
 }
 
 
 .grid {
     display: grid;
     gap: 40px;
-    grid-template-columns: auto;
+    grid-template-columns: auto auto;
     width: 100%;
     justify-content: center;
     margin: 2rem 0;
@@ -287,7 +288,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: 2px 2px 2px 1px #849a61cc;
     background-color: white;
     padding: 1rem 0;
     min-width: 20vw;
@@ -295,6 +296,7 @@ ul {
 }
 
 .group > h4{
-    
     font-family: "Made Dillan";
+    font-weight: 200;
+    font-size: 2rem;
 }
