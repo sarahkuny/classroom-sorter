@@ -171,7 +171,7 @@ export default function RosterView(props) {
       </form>
     </div>        
   </div>
-  <button onClick={props.switchToGroups}>View Groups</button> 
+  <button onClick={props.switchToGroups} id="view-groups-btn">View Groups</button> 
     </div>
   )
 }
