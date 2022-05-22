@@ -111,6 +111,7 @@ export default function RosterView(props) {
   
   
     return (
+      
       <div className="rosterview">
     <div className="roster-view">
       {/* Display Roster */}
@@ -171,7 +172,10 @@ export default function RosterView(props) {
       </form>
     </div>        
   </div>
-  <button onClick={props.switchToGroups} id="view-groups-btn">View Groups</button> 
+  <button onClick={props.switchToGroups} className="switch-view-btn">Switch to Group View</button> 
+
     </div>
+
+  
   )
 }

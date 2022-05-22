@@ -47,7 +47,7 @@ export default function GroupView(props) {
           </div>
         ))}
         </div>
-      <button className="groupview-btn" onClick={props.switchToRoster}>Edit Students</button>
+      <button className="switch-view-btn" onClick={props.switchToRoster}>Switch to Roster View</button>
     </div>
     </>
   )

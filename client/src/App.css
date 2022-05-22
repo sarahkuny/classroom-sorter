@@ -88,14 +88,15 @@
 
 /* RosterView */
 .rosterview {
-    padding-bottom: 5rem;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-color: rgb(250, 248, 234);
 }
+
+
 
 .roster-view {
     width: 100%;
@@ -215,8 +216,11 @@ button {
 }
 
 
-#view-groups-btn {
-    margin-top: 1rem;
+.switch-view-btn {
+    background-color: rgb(121, 168, 244);
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-family: "Made Dillan";
 }
 /* GroupView */
 .group-view {
