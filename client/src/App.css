@@ -150,7 +150,7 @@ button {
     font-weight: 500;
     border: none;
     border-radius: 10px !important; 
-    margin-bottom: 1rem !important;
+    
 }
 /* Roster */
 .roster {
@@ -173,8 +173,9 @@ button {
 .student-roster {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     width: 100%;
+    min-height: 5rem;
     border-bottom: 1px solid black;
     align-items: center;
 }
@@ -183,12 +184,30 @@ button {
     font-family: "Made Dillan";
     margin-bottom: 1rem;
     color: rgb(251, 175, 33);
-    padding: 0 1rem;
+    padding: 1rem;
 }
 
-.roster-btns > button {
-    margin: 0 .5rem;
+.student-name {
+    width: 10rem;
+    font-weight: bold;
 }
+
+.student-name > p {
+    margin-bottom: 0;
+}
+
+.student-goals {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content:center !important;
+    width: 10rem;
+    color: rgb(230, 50, 50);
+    font-family: "Poppins";
+    font-size: .75rem;
+    padding: 0 .5rem;
+}
+
 
 /* Create Groups */
 .create-groups {
@@ -219,6 +238,7 @@ button {
 .switch-view-btn {
     background-color: rgb(121, 168, 244);
     padding: 1rem;
+    margin-bottom: 1rem;
     font-size: 1.5rem;
     font-family: "Made Dillan";
 }

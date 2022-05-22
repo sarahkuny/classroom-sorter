@@ -124,11 +124,17 @@ export default function RosterView(props) {
         </div>
         {students && students.map(student => (
           <div key={student.student_id} className="student-roster">
-              <p>
+              <div className="student-name">
+                <p>
                 {student.first_name} {student.last_name}
-              </p>
+                </p>
+              </div>
+              <div className="student-goals">
+                {student.has_goal_one ? <span>Goal One</span> : ""}
+                {student.has_goal_two ? <span>Goal Two</span> : ""}
+                {student.has_goal_three ? <span>Goal Three</span> : ""}
+              </div>
               <div className="roster-btns">
-                {/* <button onClick={handleEdit}>Edit</button> */}
                 <button  onClick={() => handleDelete(student.student_id)} >Delete</button>
               </div>
               
