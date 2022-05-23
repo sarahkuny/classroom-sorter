@@ -11,7 +11,7 @@ This app is a tool for teachers and administrators in schools. A user will input
 ![User Flow Diagram](readme-assets/user-flow-diagram-classroom-sorter.png)
  
 ### Wireframe
-![Wireframe] (readme-assets/wireframe.png)
+![Wireframe](readme-assets/wireframe.png)
 
 
 ## Back-End
