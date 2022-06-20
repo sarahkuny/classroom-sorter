@@ -41,7 +41,7 @@ export default function GroupView(props) {
             <h4>Group {group}</h4>
             <ul>
               {groups[group].map((student) => (
-                <li>{student.first_name} {student.last_name} <span>{student.score}</span></li>
+                <li>{student.first_name} {student.last_name} </li>
               ))}
             </ul>
           </div>

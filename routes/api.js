@@ -147,7 +147,6 @@ router.put('/students/sort/:groups', (req, res) => {
         .then(() => {
           //loop through groupsObj
           for (let group in groupsObj){
-            // need key name to know what group id to assign
             groupsObj[group].forEach((student) => {
               let studentID = student.student_id;
               let groupID = group;

@@ -16,7 +16,7 @@ function App() {
   }, [])
   const  handleCreateGroups = (groupNo) => {
     //hit sorting endpoint
-    fetch(`api/students/sort/${groupNo}`,  {
+    fetch(`/api/students/sort/${groupNo}`,  {
       method:"PUT",
       headers: {
         "Content-Type": "application/json"

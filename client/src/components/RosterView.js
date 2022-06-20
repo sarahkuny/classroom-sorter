@@ -158,9 +158,9 @@ export default function RosterView(props) {
           </div>
           <div className="form-checks">
             <FormGroup>
-              <Form.Check type="checkbox" label="I can make good choices even if I am mad." checked={hasGoalOne} onChange={handleCheckOne}/>
-              <Form.Check type="checkbox" label="I can be okay even if others are not okay." checked={hasGoalTwo} onChange={handleCheckTwo}/>
-              <Form.Check type="checkbox" label="I can do something even if I don't want to (or it's hard)." checked={hasGoalThree} onChange={handleCheckThree}/>
+              <Form.Check type="checkbox" label="1. I can make good choices even if I am mad." checked={hasGoalOne} onChange={handleCheckOne}/>
+              <Form.Check type="checkbox" label="2. I can be okay even if others are not okay." checked={hasGoalTwo} onChange={handleCheckTwo}/>
+              <Form.Check type="checkbox" label="3. I can do something even if I don't want to (or it's hard)." checked={hasGoalThree} onChange={handleCheckThree}/>
             </FormGroup>
             <button type="submit">Add Student</button>
           </div>
