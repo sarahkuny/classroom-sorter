@@ -1,5 +1,5 @@
 # Classroom Sorter
-
+[Click here to visit deployed website](https://stark-wave-34325.herokuapp.com// "Link")
 This app is a tool for teachers and administrators in schools. A user will input student names and behavioral data for those students. The app will then sort students into classes, spreading behavioral attributes evenly between the classes. 
 
 [App Explanation](https://youtu.be/_8Dc4NPP5dU?t=6222)
