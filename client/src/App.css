@@ -241,7 +241,12 @@ button {
     padding: 1rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    font-family: "Made Dillan";
+    font-family: "Inter";
+}
+.switch-view-btn:hover {
+    background-color: #e6eecbce;
+    color: #2f3323;
+    border: 1px solid #aebc80;
 }
 /* GroupView */
 .group-view {
