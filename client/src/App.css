@@ -124,7 +124,7 @@
 }
 
 .student-form > h5{
-    font-family: "Made Dillan";
+    font-family: "Inter";
 }
 
 .name-input {
@@ -166,7 +166,7 @@ button {
 }
 
 .roster > h2 {
-    font-family: "Made Dillan";
+    font-family: "Inter";
     font-weight: bold;
 }
 
@@ -256,13 +256,12 @@ button {
 .group-view > h1 {
     color:rgb(251, 175, 33);
     font-family: "Made Dillan";
-    font-size: 4rem;
+    font-size: 7rem;
     padding: 2rem 0;
     background-color: white;
     width: 100vw;
     text-align: center;
     box-shadow: 0 4px 2px -2px gray;
-    text-shadow: 2px 2px #c8daabcc;
 }
 
 
@@ -296,7 +295,7 @@ ul {
 }
 
 .group > h4{
-    font-family: "Made Dillan";
+    font-family: "Inter";
     font-weight: 200;
     font-size: 2rem;
 }
